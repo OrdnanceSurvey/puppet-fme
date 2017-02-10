@@ -122,7 +122,7 @@ Puppet::Type.newtype(:fme_resource) do
 
   newparam(:path, :namevar => true) do
     validate do |value|
-      raise Puppet::Error, "'path' file path must be absolute, not '#{value}'" unless Puppet::Util.absolute_path?(value)
+      raise Puppet::Error, "'path' file path must start with /, not '#{value}'" unless value.start_with?('/')
     end
   end
 
